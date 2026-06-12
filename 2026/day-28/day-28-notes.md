@@ -1,5 +1,9 @@
 ### Task 1: Self-Assessment Checklist ###
 
+## Self-Assessment Checklist
+
+![Self Assessment Checklist](/home/atharva/Downloads/TASK-1.png)
+
 ***Reviewed my Linux, Shell Scripting, and Git/GitHub skills.
 ✅ Can do confidently
 🟡 Need to revisit
