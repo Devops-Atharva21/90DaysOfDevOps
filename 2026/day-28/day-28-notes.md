@@ -1,46 +1,6 @@
 ### Task 1: Self-Assessment Checklist ###
 
-## Self-Assessment Checklist
-
 ![Self Assessment Checklist](images/TASK-1.png)
-
-***Reviewed my Linux, Shell Scripting, and Git/GitHub skills.
-✅ Can do confidently
-🟡 Need to revisit
-❌ Haven't done yet
-
-Category	                  Checklist Item	                                                        Status (✅/🟡/❌)
-Linux	          Navigate the file system, create/move/delete files and directories	                           ✅
-Linux	          Manage processes — list, kill, background/foreground	                                           ✅
-Linux	          Work with systemd — start, stop, enable, check status of services	                               ✅
-Linux	          Read and edit text files using vi/vim or nano	                                                   ✅
-Linux	          Troubleshoot CPU, memory, and disk issues using top, free, df, du	                               ✅
-Linux	          Explain the Linux file system hierarchy (/, /etc, /var, /home, /tmp, etc.)	                   ✅
-Linux	          Create users and groups, manage passwords	                                                       ✅
-Linux	          Set file permissions using chmod (numeric and symbolic)	                                       ✅
-Linux	          Change file ownership with chown and chgrp	                                                   ✅
-Linux	          Create and manage LVM volumes	                                                                   ✅
-Linux	          Check network connectivity — ping, curl, netstat, ss, dig, nslookup	                           🟡
-Linux	          Explain DNS resolution, IP addressing, subnets, and common ports	                               🟡
-Shell Scripting	  Write a script with variables, arguments, and user input	                                       ✅
-Shell Scripting	  Use if/elif/else and case statements	                                                           ✅
-Shell Scripting	  Write for, while, and until loops	                                                               ✅
-Shell Scripting	  Define and call functions with arguments and return values	                                   🟡
-Shell Scripting	  Use grep, awk, sed, sort, uniq for text processing	                                           🟡
-Shell Scripting	  Handle errors with set -e, set -u, set -o pipefail, trap	                                       🟡
-Shell Scripting	  Schedule scripts with crontab	                                                                   🟡 
-Git & GitHub	  Initialize a repo, stage, commit, and view history	                                           ✅
-Git & GitHub	  Create and switch branches	                                                                   ✅
-Git & GitHub	  Push to and pull from GitHub	                                                                   ✅
-Git & GitHub	  Explain clone vs fork	                                                                           ✅
-Git & GitHub	  Merge branches — understand fast-forward vs merge commit	                                       🟡
-Git & GitHub	  Rebase a branch and explain when to use it vs merge	                                           🟡
-Git & GitHub	  Use git stash and git stash pop	                                                               ✅
-Git & GitHub	  Cherry-pick a commit from another branch	                                                       ✅
-Git & GitHub	  Explain squash merge vs regular merge	                                                           🟡
-Git & GitHub	  Use git reset (soft, mixed, hard) and git revert	                                               🟡
-Git & GitHub	  Explain GitFlow, GitHub Flow, and Trunk-Based Development	                                       ❌
-Git & GitHub	  Use GitHub CLI to create repos, PRs, and issues	                                               🟡
 
 ## Task 2: Revisit Weak Spots
 
