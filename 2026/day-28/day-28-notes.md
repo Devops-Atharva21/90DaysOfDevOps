@@ -56,3 +56,11 @@ git fetch downloads changes without merging them, while git pull downloads and m
 
 **10. What is LVM and why would you use it instead of regular partitions?**
 LVM (Logical Volume Manager) provides flexible disk management, allowing volumes to be resized and managed more easily than traditional partitions.
+
+###Task 5: Teach It Back
+
+***What I learn about Git Stash and Git Stash Pop***
+git stash is used to temporarily save your uncommitted changes without creating a commit. Think of it as putting your work aside safely when you need to switch branches or work on something urgent. Your working directory becomes clean after stashing the changes.
+
+When you're ready to continue your previous work, you can use git stash pop. This command restores the most recently stashed changes back to your working directory and removes that stash entry from the stash list.
+
