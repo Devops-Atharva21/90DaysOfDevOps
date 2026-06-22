@@ -33,4 +33,4 @@ docker system df to check how much disk space Docker is using
 
 ### TASK -3
 
-![Docker Cheat Sheet](images/'ChatGPT Image Jun 22, 2026, 08_05_12 PM.png')
+![Docker Cheat Sheet](images/Docker-cheatsheet.png )
