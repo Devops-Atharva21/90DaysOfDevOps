@@ -1,0 +1,17 @@
+name: Scheduled Cron Job
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  scheduled-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Prints Scheduled Message
+        run: echo "This is workflow runs everydat at midnight at 12 AM"
+

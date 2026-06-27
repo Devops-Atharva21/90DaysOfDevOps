@@ -1,0 +1,29 @@
+name: Python-matrix
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate: 
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest,windows-latest]
+        python-version: ["3.10","3.11","3.12"]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: setup python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: show details
+        run: |
+          echo "Operating System: ${{ matrix.os }}"
+          python --version
+          pwd  

@@ -1,0 +1,20 @@
+name: Manual Deplyoment
+
+on:
+  workflow_dispatch:
+    inputs:
+      enviroment:
+        description: "Select the deployment"
+        required: true
+        default: "stagging"
+
+jobs:
+  manual-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Print Select Enviroment
+        run : echo " Deploying Enviroment"
