@@ -1,0 +1,21 @@
+name: Self-Hosted
+
+on:
+  workflow_dispatch:
+
+jobs:
+  self-server:
+    runs-on: [self-hosted,my-linux-runner]
+
+    steps:
+      - name: Run Command
+        run: |
+          echo "HostName"
+          hostname 
+          echo "Print Current Working Directory"
+          pwd
+          echo "Creating A File"
+          touch test-file.txt
+          ls 
+          cp -R test-file.txt /home/atharva/Documents
+          ls /home/atharva/Documents
