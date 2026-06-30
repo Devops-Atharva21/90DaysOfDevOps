@@ -1,0 +1,33 @@
+name: Conditionals Demo
+
+on:
+  push:
+    branches:
+      - main
+      - feature/pr-test
+  pull_request:
+
+jobs:
+  demo-job:
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Step 1 - Always Runs
+        run: echo "This step always runs."
+
+      - name: Step 2 -Runs Only on Main Branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "This is the main branch"
+
+      - name: Step 3 - Intentional Failure
+        run: exit 1
+        continue-on-error: true
+
+      - name: Step 4 - Runs Only If pervious Step failed
+        if: failure()
+        run: echo "The pervious step failed"
+
+      - name: Step 5 - Workflow Continues
+        run: echo "Workflow continued because continue-on-error is true."
