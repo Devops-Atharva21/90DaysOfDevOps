@@ -1,0 +1,13 @@
+name: Github Secret Demo-2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  secert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Secret
+        run: |
+         echo "${{ secrets.MY_SECERT_MESSAGE }}" 

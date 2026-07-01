@@ -1,0 +1,17 @@
+name: Github Secret Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  secert-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check if secerts exists
+        run: | 
+          if [ -n "${{ secrets.MY_SECERT_MESSAGE }}" ]; then
+            echo "The secert is set: true"
+          else
+            echo "The secert is set: false"
+          fi

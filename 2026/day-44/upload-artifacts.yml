@@ -1,0 +1,22 @@
+name: Upload Artifact Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create A Report
+        run: |
+          echo "GitHub Actions Artifact Demo" > report.txt
+          echo "Workflow completed successfully." >> report.txt
+          echo "Date: $(date)" >> report.txt
+
+      - name: Upload Report As Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: report.txt
+
