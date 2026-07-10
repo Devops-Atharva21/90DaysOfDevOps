@@ -1,0 +1,21 @@
+name: Ignore Documentation Changes
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
+
+jobs:
+  ignore-docs-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Trigger Information
+        run: |
+          echo "✅ Workflow executed."
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Changes are not limited to documentation" 
