@@ -1,0 +1,41 @@
+name: Main Pipeline
+
+on: 
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    uses: ./.github/workflows/reusable-build-test.yml
+    with:
+      node_version: "20"
+      run_tests: true
+
+  docker:
+    needs: build-test
+
+    uses: ./.github/workflows/reusable-docker.yml
+    with:
+      image_name: tetris-game-tetris-app
+
+    secrets:
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
+
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+
+    steps:
+      - name: Deploy Application
+        run: | 
+          echo "Deploying image: ${{ needs.docker.outputs.image_url }} to production"
+
+      - name: Deployment Complete
+        run: echo "Deployment Successful"
