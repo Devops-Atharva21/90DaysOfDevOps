@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-demo
+
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command:
+        - sh
+        - -c
+        - |
+          mkdir -p /data
+          echo "Created at: $(date)" > /data/message.txt
+          echo "File written..."
+          sleep 3600
+
+      volumeMounts:
+        - name: data-volume
+          mountPath: /data
+
+  volumes:
+    - name: data-volume
+      emptyDir: {}
+
