@@ -1,0 +1,52 @@
+---
+- name: Conditional tasks demo
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Install Nginx (only on Ubuntu)
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+      when: "'ubuntu' in group_names"
+
+    - name: Run MySQL task (only on Amazon)
+      ansible.builtin.debug:
+        msg: "MySQL task running only on Amazon Linux"
+      when: "'amazon' in group_names"
+
+    - name: Show warning on low memory hosts
+      ansible.builtin.debug:
+        msg: "WARNING: This host has less than 1G RAM"
+      when: ansible_facts["memtotal_mb"] < 1024
+
+    - name: Run only on Amazon Linux
+      ansible.builtin.debug:
+        msg: "This is an Amazon Linux machine"
+      when: ansible_facts["distribution"] == "Amazon"
+
+    - name: Run only on Ubuntu
+      ansible.builtin.debug:
+        msg: "This is an Ubuntu machine"
+      when: ansible_facts["distribution"] == "Ubuntu"
+
+    - name: Run only in production
+      ansible.builtin.debug:
+        msg: "This host is running in production"
+      when: app_env == "production"
+
+    - name: Multiple conditions (AND)
+      ansible.builtin.debug:
+        msg: "Ubuntu production server with low memory"
+      when:
+        - ansible_facts["distribution"] == "Ubuntu"
+        - app_env == "production"
+        - ansible_facts["memtotal_mb"] < 1024
+
+    - name: OR condition
+      ansible.builtin.debug:
+        msg: "This is either Ubuntu or Amazon Linux"
+      when: >
+        ansible_facts["distribution"] == "Ubuntu"
+        or ansible_facts["distribution"] == "Amazon"

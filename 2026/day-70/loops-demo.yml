@@ -1,0 +1,66 @@
+---
+- name: Loops demo
+  hosts: all
+  become: true
+
+  vars:
+    users:
+      - name: deploy
+        groups: "{{ 'sudo' if ansible_facts['os_family'] == 'Debian' else 'wheel' }}"
+      - name: monitor
+        groups: "{{ 'sudo' if ansible_facts['os_family'] == 'Debian' else 'wheel' }}"
+      - name: appuser
+        groups: users
+
+    directories:
+      - /opt/app/logs
+      - /opt/app/config
+      - /opt/app/data
+      - /opt/app/tmp
+
+  tasks:
+
+    - name: Create users group on Ubuntu
+      ansible.builtin.group:
+        name: users
+        state: present
+      when: ansible_facts["os_family"] == "Debian"
+
+    - name: Create multiple users
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        groups: "{{ item.groups }}"
+        state: present
+      loop: "{{ users }}"
+
+    - name: Create multiple directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: "0755"
+      loop: "{{ directories }}"
+
+    - name: Install multiple packages on Amazon Linux
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - unzip
+        - jq
+      when: ansible_facts["os_family"] == "RedHat"
+
+    - name: Install multiple packages on Ubuntu
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - unzip
+        - jq
+      when: ansible_facts["os_family"] == "Debian"
+
+    - name: Print each user created
+      ansible.builtin.debug:
+        msg: "Created user {{ item.name }} in group {{ item.groups }}"
+      loop: "{{ users }}"
